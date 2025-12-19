@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4 (Beta)] - 2025-12-20
+
+### Added
+- Comprehensive footer with version, README/CHANGELOG links (via md-viewer), copyright, and hits.sh view counter.
+- Hits.sh badge integration in README for view tracking.
+
+### Changed
+- Updated README features section to document all functionality from previous releases.
+
 ## [0.1.3 (Beta)] - 2025-12-19
 
 ### Changed
