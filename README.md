@@ -1,4 +1,4 @@
-# PDF Reorder v0.0.1 (Beta)
+# PDF Reorder v0.1.0 (Beta)
 
 A premium, client-side web application to reorder pages of a PDF file.
 
