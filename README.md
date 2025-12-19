@@ -1,4 +1,10 @@
-# PDF Reorder v0.1.0 (Beta)
+# PDF Reorder v0.1.1 (Beta)
+
+[![Version](https://img.shields.io/badge/version-v0.1.1--Beta-blue)](https://github.com/kuancheen/pdf-reorder/releases)
+[![Status](https://img.shields.io/badge/status-active-success)](#)
+[![Live Demo](https://img.shields.io/badge/demo-live-orange)](https://kuancheen.github.io/pdf-reorder/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Semantic Versioning](https://img.shields.io/badge/semver-2.0.0-blue)](https://semver.org/spec/v2.0.0.html)
 
 A premium, client-side web application to reorder pages of a PDF file.
 
