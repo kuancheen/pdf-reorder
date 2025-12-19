@@ -12,6 +12,9 @@ const reorderBtn = document.getElementById('reorder-btn');
 const btnText = document.getElementById('btn-text');
 const btnLoader = document.getElementById('btn-loader');
 const statusMsg = document.getElementById('status-msg');
+const progressContainer = document.getElementById('upload-progress-container');
+const progressBar = document.getElementById('progress-bar');
+const progressPercent = document.getElementById('progress-percent');
 
 let currentFile = null;
 let totalPages = 0;
@@ -49,18 +52,34 @@ async function handleFileSelect(file) {
 
     currentFile = file;
     filenameDisplay.textContent = file.name;
-    
+
+    // Show progress container
+    progressContainer.style.display = 'block';
+    fileInfo.classList.remove('visible');
+    controlsSection.classList.remove('visible');
+    updateProgress(0);
+
     try {
+        // Simulate progress since arrayBuffer() is fast locally but gives feedback
+        updateProgress(30);
         const arrayBuffer = await file.arrayBuffer();
+        updateProgress(60);
+
         originalPdfDoc = await PDFDocument.load(arrayBuffer);
         totalPages = originalPdfDoc.getPageCount();
-        
-        pageCountDisplay.textContent = `${totalPages} Pages`;
-        fileInfo.classList.add('visible');
-        controlsSection.classList.add('visible');
+
+        updateProgress(100);
+        setTimeout(() => {
+            progressContainer.style.display = 'none';
+            pageCountDisplay.textContent = `${totalPages} Pages`;
+            fileInfo.classList.add('visible');
+            controlsSection.classList.add('visible');
+        }, 500);
+
         showStatus('', ''); // Clear errors
     } catch (err) {
         console.error(err);
+        progressContainer.style.display = 'none';
         showStatus('Error reading PDF file. It might be password protected or corrupted.', 'error');
     }
 }
@@ -81,15 +100,22 @@ async function handleReorder() {
     setLoading(true);
     try {
         const newPdfDoc = await PDFDocument.create();
-        
+
         // Copy pages one by one based on indices
         // pdf-lib's copyPages works with an array of indices
         const copiedPages = await newPdfDoc.copyPages(originalPdfDoc, pageIndices);
         copiedPages.forEach((page) => newPdfDoc.addPage(page));
 
         const pdfBytes = await newPdfDoc.save();
-        downloadBlob(pdfBytes, `reordered_${currentFile.name}`, 'application/pdf');
-        
+
+        // Generate filename with suffix
+        const nameParts = currentFile.name.split('.');
+        const ext = nameParts.pop();
+        const baseName = nameParts.join('.');
+        const newFileName = `${baseName}_reordered.${ext}`;
+
+        downloadBlob(pdfBytes, newFileName, 'application/pdf');
+
         showStatus('Success! Your reordered PDF has been downloaded.', 'success');
     } catch (err) {
         console.error(err);
@@ -132,6 +158,11 @@ function showStatus(msg, type) {
     if (type) {
         statusMsg.classList.add(type);
     }
+}
+
+function updateProgress(percent) {
+    progressBar.style.width = `${percent}%`;
+    progressPercent.textContent = `${percent}%`;
 }
 
 function setLoading(isLoading) {
