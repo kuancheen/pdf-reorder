@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3 (Beta)] - 2025-12-19
+
+### Changed
+- Aligned branding with the PDF Splitter app, adopting the premium title gradient and typography.
+- Integrated the app icon directly into the main header `<h1>` for better branding.
+
 ## [0.1.2 (Beta)] - 2025-12-19
 
 ### Added
