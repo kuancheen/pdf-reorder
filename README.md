@@ -1,6 +1,6 @@
-# PDF Reorder v0.1.4 (Beta)
+# PDF Reorder v1.0.0
 
-[![Version](https://img.shields.io/badge/version-v0.1.4--Beta-blue)](https://github.com/kuancheen/pdf-reorder/releases)
+[![Version](https://img.shields.io/badge/version-v1.0.0-blue)](https://github.com/kuancheen/pdf-reorder/releases)
 [![Status](https://img.shields.io/badge/status-active-success)](#)
 [![Live Demo](https://img.shields.io/badge/demo-live-orange)](https://kuancheen.github.io/pdf-reorder/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
